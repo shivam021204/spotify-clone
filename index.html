@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Your favourite music is here</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" width="26" height="26">
+                    <path fill="#1DB954" d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.2-15-74.9-8.2-2.9.7-5.7-1.1-6.4-4-.7-2.9 1.1-5.7 4-6.4 32.5-7.4 60.4-4.2 82.9 9.5 2.5 1.5 3.3 4.8 1.7 7.3zm10.3-22.9c-1.9 3.1-5.9 4.1-9 2.2-22.9-14.1-57.8-18.2-84.9-9.9-3.5 1.1-7.2-.9-8.3-4.4-1.1-3.5.9-7.2 4.4-8.3 30.9-9.4 69.3-4.8 95.6 11.4 3.1 1.9 4.1 5.9 2.2 9zm.9-23.8C108.4 57.5 63.7 56 38.2 63.8c-4.2 1.3-8.6-1.1-9.8-5.2-1.3-4.2 1.1-8.6 5.2-9.8 29.1-8.8 77.5-7.1 108.1 11.1 3.7 2.2 4.9 7 2.7 10.7-2.1 3.7-7 4.9-10.6 2.8z"/>
+                </svg>
+                Spotify
+            </li>
+            <li id="navHome" class="nav-active">Home</li>
+            <li id="navAbout">About</li>
+            <div class="nav-right">
+                <span id="userInfo" class="nav-user-info"></span>
+                <button class="nav-icon-btn" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="nav-logout-btn" id="logout" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="homePage" class="page active">
+            <div class="container">
+                <div class="songList">
+                    <h1>Best of Bollywood</h1>
+                    <div class="songItemContainer">
+                        <div class="songItem" data-index="0">
+                            <img src="covers/1.jpg" alt="Salaam E Ishq">
+                            <span class="songName">Salaam E Ishq</span>
+                            <span class="songlistplay"><span class="timestamp">04:21 <i id="0" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="1">
+                            <img src="covers/2.jpg" alt="Tum Hi Ho">
+                            <span class="songName">Tum Hi Ho</span>
+                            <span class="songlistplay"><span class="timestamp">04:32 <i id="1" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="2">
+                            <img src="covers/3.jpg" alt="Kal Ho Naa Ho">
+                            <span class="songName">Kal Ho Naa Ho</span>
+                            <span class="songlistplay"><span class="timestamp">05:14 <i id="2" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="3">
+                            <img src="covers/4.jpg" alt="Dil Dhadakne Do">
+                            <span class="songName">Dil Dhadakne Do</span>
+                            <span class="songlistplay"><span class="timestamp">03:58 <i id="3" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="4">
+                            <img src="covers/5.jpg" alt="Ae Dil Hai Mushkil">
+                            <span class="songName">Ae Dil Hai Mushkil</span>
+                            <span class="songlistplay"><span class="timestamp">04:47 <i id="4" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="5">
+                            <img src="covers/6.jpg" alt="Gerua">
+                            <span class="songName">Gerua</span>
+                            <span class="songlistplay"><span class="timestamp">04:08 <i id="5" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="6">
+                            <img src="covers/7.jpg" alt="Raabta">
+                            <span class="songName">Raabta</span>
+                            <span class="songlistplay"><span class="timestamp">03:44 <i id="6" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="7">
+                            <img src="covers/8.jpg" alt="Phir Bhi Tumko Chahna">
+                            <span class="songName">Phir Bhi Tumko Chahna</span>
+                            <span class="songlistplay"><span class="timestamp">05:02 <i id="7" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="8">
+                            <img src="covers/9.jpg" alt="Kabira">
+                            <span class="songName">Kabira</span>
+                            <span class="songlistplay"><span class="timestamp">04:19 <i id="8" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                        <div class="songItem" data-index="9">
+                            <img src="covers/10.jpg" alt="Tera Ban Jaunga">
+                            <span class="songName">Tera Ban Jaunga</span>
+                            <span class="songlistplay"><span class="timestamp">03:51 <i id="9" class="far songItemPlay fa-play-circle"></i></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="songBanner"></div>
+            </div>
+        </div>
+
+        <div id="aboutPage" class="page">
+            <div class="about-page">
+                <div class="about-hero">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" width="80" height="80">
+                        <path fill="rgba(255,255,255,0.9)" d="M84 0C37.6 0 0 37.6 0 84s37.6 84 84 84 84-37.6 84-84S130.4 0 84 0zm38.6 121.2c-1.5 2.5-4.8 3.3-7.3 1.8-20-12.2-45.2-15-74.9-8.2-2.9.7-5.7-1.1-6.4-4-.7-2.9 1.1-5.7 4-6.4 32.5-7.4 60.4-4.2 82.9 9.5 2.5 1.5 3.3 4.8 1.7 7.3zm10.3-22.9c-1.9 3.1-5.9 4.1-9 2.2-22.9-14.1-57.8-18.2-84.9-9.9-3.5 1.1-7.2-.9-8.3-4.4-1.1-3.5.9-7.2 4.4-8.3 30.9-9.4 69.3-4.8 95.6 11.4 3.1 1.9 4.1 5.9 2.2 9zm.9-23.8C108.4 57.5 63.7 56 38.2 63.8c-4.2 1.3-8.6-1.1-9.8-5.2-1.3-4.2 1.1-8.6 5.2-9.8 29.1-8.8 77.5-7.1 108.1 11.1 3.7 2.2 4.9 7 2.7 10.7-2.1 3.7-7 4.9-10.6 2.8z"/>
+                    </svg>
+                    <div class="about-hero-text">
+                        <h1>Your music, everywhere.</h1>
+                        <p>Spotify brings you millions of songs, podcasts, and playlists from artists around the world. Discover new music, revisit classics, and enjoy uninterrupted playback — all in one beautifully designed player.</p>
+                    </div>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-music"></i></div>
+                        <h3>Curated Playlists</h3>
+                        <p>Hand-picked collections updated daily to match your mood, the time of day, and what's trending right now.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Instant Playback</h3>
+                        <p>Zero buffering, seamless transitions. Jump between tracks instantly with our optimised streaming engine.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
+                        <h3>Smart Controls</h3>
+                        <p>Progress bar seeking, auto-advance, per-song play icons — every control exactly where you expect it.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-moon"></i></div>
+                        <h3>Dark &amp; Light Mode</h3>
+                        <p>Switch between dark and light themes instantly from Settings. Your eyes, your choice.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-th-large"></i></div>
+                        <h3>Album Art Display</h3>
+                        <p>Full cover art shown in the side panel as you play, bringing each song's visual identity to life.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                        <h3>Endless Listening</h3>
+                        <p>Songs auto-advance so the music never stops. Built for long sessions, workouts, focus, and everything in between.</p>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-num">10+</span>
+                        <span class="stat-label">Songs in Library</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">HD</span>
+                        <span class="stat-label">Audio Quality</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">0ms</span>
+                        <span class="stat-label">Startup Time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Player Bar -->
+    <div class="bottom">
+        <div class="progressWrapper">
+            <span class="timeLabel" id="currentTime">0:00</span>
+            <div class="progress-wrap" id="progressWrap">
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-knob" id="progressKnob"></div>
+            </div>
+            <span class="timeLabel" id="totalTime">0:00</span>
+        </div>
+        <div class="bottomControls">
+            <div class="songInfo">
+                <img src="playing.gif" width="36" alt="Now Playing" id="gif">
+                <span id="masterSongName">Salaam E Ishq</span>
+            </div>
+            <div class="icons">
+                <i class="fas fa-step-backward" id="previous"></i>
+                <i class="far fa-play-circle" id="masterPlay"></i>
+                <i class="fas fa-step-forward" id="next"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <button class="close-btn" id="closeSettings"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="settings-body">
+                <div class="settings-section-title">Appearance</div>
+                <div class="settings-row">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon"><i class="fas fa-moon"></i></div>
+                        <div>
+                            <div class="settings-row-label">Dark Mode</div>
+                            <div class="settings-row-sub">Switch between dark and light theme</div>
+                        </div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="darkModeToggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="settings-divider"></div>
+                <div class="settings-section-title">Playback</div>
+
+                <div class="settings-row">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon"><i class="fas fa-redo"></i></div>
+                        <div>
+                            <div class="settings-row-label">Auto-advance</div>
+                            <div class="settings-row-sub">Play next song when current ends</div>
+                        </div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="autoAdvanceToggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="settings-row">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon"><i class="fas fa-volume-up"></i></div>
+                        <div>
+                            <div class="settings-row-label">Volume</div>
+                            <div class="settings-row-sub">Default playback volume</div>
+                        </div>
+                    </div>
+                    <select class="settings-select" id="volumeSelect">
+                        <option value="1">100%</option>
+                        <option value="0.75">75%</option>
+                        <option value="0.5">50%</option>
+                        <option value="0.25">25%</option>
+                    </select>
+                </div>
+
+                <div class="settings-divider"></div>
+                <div class="settings-section-title">Display</div>
+
+                <div class="settings-row">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon"><i class="fas fa-image"></i></div>
+                        <div>
+                            <div class="settings-row-label">Show Album Art</div>
+                            <div class="settings-row-sub">Display cover in side panel</div>
+                        </div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="albumArtToggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="settings-divider"></div>
+                <div class="settings-section-title">Account</div>
+                <div class="settings-row">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon"><i class="fas fa-user"></i></div>
+                        <div>
+                            <div class="settings-row-label">Logged in as</div>
+                            <div class="settings-row-sub" id="userInfo">—</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="settings-row-left">
+                        <div class="settings-row-icon" style="background:rgba(220,50,50,0.12);color:#e05252;">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <div>
+                            <div class="settings-row-label">Logout</div>
+                            <div class="settings-row-sub">Sign out of your account</div>
+                        </div>
+                    </div>
+                    <button class="settings-logout-btn" id="logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
