@@ -13,9 +13,8 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-setPersistence(auth, browserSessionPersistence);
-
 const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 const getEl = (id) => document.getElementById(id);
 
 const path = window.location.pathname;
