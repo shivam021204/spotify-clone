@@ -86,18 +86,7 @@ function hideLoader() {
   }
 }
 
-// ── Handle redirect result (Firebase Hosting only) ──
-if (useRedirect) {
-  getRedirectResult(auth).then((result) => {
-    if (result?.user) {
-      window.location.href = "index.html";
-    }
-  }).catch((err) => {
-    console.error("Redirect error:", err.message);
-    const status = getEl("status");
-    if (status) status.textContent = "Sign-in failed: " + err.message;
-  });
-}
+// (Redirect handler removed as we use popup everywhere)
 
 // ── Auth state ──
 onAuthStateChanged(auth, (user) => {
@@ -115,12 +104,7 @@ onAuthStateChanged(auth, (user) => {
 // ── Google login ──
 getEl("googleLogin")?.addEventListener("click", async () => {
   const status = getEl("status");
-  if (useRedirect) {
-    // Firebase Hosting — full page redirect, no popup
-    showLoader("Redirecting to Google...");
-    await signInWithRedirect(auth, googleProvider);
-  } else {
-    // Vercel / localhost — popup with loading overlay
+    // Use popup for all environments for consistent behavior
     showLoader("Connecting to Google...");
     try {
       await signInWithPopup(auth, googleProvider);
@@ -131,7 +115,6 @@ getEl("googleLogin")?.addEventListener("click", async () => {
       console.error("Google Error:", err.message);
       if (status) status.textContent = "Sign-in failed: " + err.message;
     }
-  }
 });
 
 // ── Logout ──

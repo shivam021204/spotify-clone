@@ -5,7 +5,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-aut
 
 const firebaseConfig = {
   apiKey: "AIzaSyB2zc3gFq7rwdvr5_KqlKs-jjJTO2i4Qxk",
-  authDomain: "spotifyclone-f6de9.firebaseapp.com",
+  authDomain: "spotifyclone-f6de9.web.app",
   projectId: "spotifyclone-f6de9",
   storageBucket: "spotifyclone-f6de9.appspot.com",
   messagingSenderId: "960946511760",
