@@ -23,8 +23,7 @@ const onLoginPage = path.endsWith("login.html") || path === "/" || path === "" |
 const onIndexPage = path.endsWith("app.html");
 
 // Use redirect on Firebase Hosting, popup everywhere else (Vercel/localhost)
-const useRedirect = host.endsWith("firebaseapp.com") || host.endsWith("web.app");
-
+const useRedirect = false;
 // ── Loading overlay ──
 function showLoader(message = "Signing in...") {
   let overlay = getEl("authLoader");
