@@ -20,7 +20,7 @@ const getEl = (id) => document.getElementById(id);
 const path = window.location.pathname;
 const host = window.location.hostname;
 const onLoginPage = path.endsWith("login.html") || path === "/" || path === "" || path.endsWith("/");
-const onIndexPage = path.endsWith("index.html");
+const onIndexPage = path.endsWith("app.html");
 
 // Use redirect on Firebase Hosting, popup everywhere else (Vercel/localhost)
 const useRedirect = host.endsWith("firebaseapp.com") || host.endsWith("web.app");
@@ -91,7 +91,7 @@ function hideLoader() {
 // ── Auth state ──
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    if (onLoginPage && !onIndexPage) window.location.href = "index.html";
+    if (onLoginPage && !onIndexPage) window.location.href = "app.html";
     const displayName = user.email || user.displayName || "Logged in";
     document.querySelectorAll("#userInfo, #userInfoModal").forEach(el => {
       if (el) el.innerText = displayName;
@@ -109,7 +109,7 @@ getEl("googleLogin")?.addEventListener("click", async () => {
     try {
       await signInWithPopup(auth, googleProvider);
       showLoader("Signing you in...");
-      window.location.href = "index.html";
+      window.location.href = "app.html";
     } catch (err) {
       hideLoader();
       console.error("Google Error:", err.message);
