@@ -13,6 +13,8 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+setPersistence(auth, browserSessionPersistence);
+
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 const getEl = (id) => document.getElementById(id);
@@ -22,8 +24,9 @@ const host = window.location.hostname;
 const onLoginPage = path.endsWith("login.html") || path === "/" || path === "" || path.endsWith("/");
 const onIndexPage = path.endsWith("app.html");
 
-// Use redirect on Firebase Hosting, popup everywhere else (Vercel/localhost)
-const useRedirect = false;
+// Redirect on Firebase Hosting, popup on Vercel/localhost
+const useRedirect = host.endsWith("firebaseapp.com") || host.endsWith("web.app");
+
 // ── Loading overlay ──
 function showLoader(message = "Signing in...") {
   let overlay = getEl("authLoader");
@@ -85,7 +88,18 @@ function hideLoader() {
   }
 }
 
-// (Redirect handler removed as we use popup everywhere)
+// ── Handle redirect result (Firebase Hosting) ──
+if (useRedirect) {
+  getRedirectResult(auth).then((result) => {
+    if (result?.user) {
+      window.location.href = "app.html";
+    }
+  }).catch((err) => {
+    console.error("Redirect error:", err.message);
+    const status = getEl("status");
+    if (status) status.textContent = "Sign-in failed: " + err.message;
+  });
+}
 
 // ── Auth state ──
 onAuthStateChanged(auth, (user) => {
@@ -103,7 +117,10 @@ onAuthStateChanged(auth, (user) => {
 // ── Google login ──
 getEl("googleLogin")?.addEventListener("click", async () => {
   const status = getEl("status");
-    // Use popup for all environments for consistent behavior
+  if (useRedirect) {
+    showLoader("Redirecting to Google...");
+    await signInWithRedirect(auth, googleProvider);
+  } else {
     showLoader("Connecting to Google...");
     try {
       await signInWithPopup(auth, googleProvider);
@@ -114,6 +131,7 @@ getEl("googleLogin")?.addEventListener("click", async () => {
       console.error("Google Error:", err.message);
       if (status) status.textContent = "Sign-in failed: " + err.message;
     }
+  }
 });
 
 // ── Logout ──
