@@ -22,8 +22,7 @@ const path = window.location.pathname;
 const host = window.location.hostname;
 
 // ✅ FIXED page detection
-const onLoginPage = path.endsWith("login.html");
-const onIndexPage = path.endsWith("index.html");
+const onLoginPage = path === "/" || path.endsWith("login.html");
 
 // ✅ Detect Firebase hosting
 const useRedirect =
