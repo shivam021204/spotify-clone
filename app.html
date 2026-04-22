@@ -12,7 +12,7 @@
 
     :root {
       --green: #1DB954;
-      --green-dim: rgba(29,185,84,0.15);
+      --green-dim: rgba(29,185,84,0.13);
       --bg: #080808;
       --surface: #101010;
       --surface2: #161616;
@@ -21,8 +21,9 @@
       --text: #f0ede8;
       --muted: rgba(240,237,232,0.42);
       --muted2: rgba(240,237,232,0.22);
+      --star: #f5a623;
       --nav-h: 60px;
-      --player-h: 82px;
+      --player-h: 90px;
     }
 
     [data-theme="light"] {
@@ -42,168 +43,89 @@
     nav {
       height: var(--nav-h);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 28px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      position: relative; z-index: 10;
+      padding: 0 28px; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: relative; z-index: 10;
     }
-
     .nav-left { display: flex; align-items: center; gap: 32px; }
     .nav-brand { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 18px; letter-spacing: 0.08em; font-weight: 400; }
-
     .nav-links { display: flex; gap: 4px; }
-    .nav-link {
-      padding: 6px 14px; border-radius: 2px; font-size: 12.5px; font-weight: 400;
-      letter-spacing: 0.06em; color: var(--muted); cursor: pointer;
-      transition: color 0.18s, background 0.18s; user-select: none;
-    }
+    .nav-link { padding: 6px 14px; border-radius: 2px; font-size: 12.5px; font-weight: 400; letter-spacing: 0.06em; color: var(--muted); cursor: pointer; transition: color 0.18s, background 0.18s; user-select: none; }
     .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    [data-theme="light"] .nav-link:hover { background: rgba(0,0,0,0.04); }
     .nav-link.nav-active { color: var(--text); }
-
     .nav-right { display: flex; align-items: center; gap: 10px; }
-
-    .nav-user {
-      font-size: 12px; color: var(--muted); letter-spacing: 0.04em;
-      padding: 5px 12px; border-radius: 2px;
-      border: 1px solid var(--border2); background: rgba(255,255,255,0.02);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;
-    }
-
-    .icon-btn {
-      width: 34px; height: 34px; border-radius: 2px;
-      background: transparent; border: 1px solid var(--border2);
-      color: var(--muted); cursor: pointer; font-size: 13px;
-      display: flex; align-items: center; justify-content: center;
-      transition: color 0.18s, background 0.18s, border-color 0.18s;
-    }
+    .nav-user { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; padding: 5px 12px; border-radius: 2px; border: 1px solid var(--border2); background: rgba(255,255,255,0.02); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+    [data-theme="light"] .nav-user { background: rgba(0,0,0,0.02); }
+    .icon-btn { width: 34px; height: 34px; border-radius: 2px; background: transparent; border: 1px solid var(--border2); color: var(--muted); cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; transition: color 0.18s, background 0.18s, border-color 0.18s; }
     .icon-btn:hover { color: var(--text); background: rgba(255,255,255,0.05); border-color: var(--border); }
-
-    .logout-btn {
-      padding: 6px 14px; border-radius: 2px; font-size: 12px; font-weight: 400;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      background: transparent; border: 1px solid var(--border);
-      color: var(--muted); cursor: pointer;
-      transition: color 0.18s, border-color 0.18s, background 0.18s;
-    }
+    [data-theme="light"] .icon-btn:hover { background: rgba(0,0,0,0.05); }
+    .logout-btn { padding: 6px 14px; border-radius: 2px; font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: color 0.18s, border-color 0.18s, background 0.18s; }
     .logout-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+    [data-theme="light"] .logout-btn:hover { border-color: rgba(0,0,0,0.2); background: rgba(0,0,0,0.04); }
 
     /* ── MAIN ── */
-    main {
-      height: calc(100vh - var(--nav-h) - var(--player-h));
-      overflow: hidden;
-    }
-
+    main { height: calc(100vh - var(--nav-h) - var(--player-h)); overflow: hidden; }
     .page { display: none; height: 100%; overflow-y: auto; }
     .page.active { display: block; }
     .page::-webkit-scrollbar { width: 4px; }
-    .page::-webkit-scrollbar-track { background: transparent; }
     .page::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-    /* ── HOME PAGE ── */
-    .home-inner {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 0;
-      height: 100%;
-    }
+    /* ── HOME ── */
+    .home-inner { display: grid; grid-template-columns: 1fr 340px; height: 100%; }
 
-    /* Song list */
-    .song-list-pane {
-      padding: 36px 36px 36px 36px;
-      border-right: 1px solid var(--border);
-      overflow-y: auto;
-    }
+    .song-list-pane { padding: 36px; border-right: 1px solid var(--border); overflow-y: auto; }
     .song-list-pane::-webkit-scrollbar { width: 3px; }
     .song-list-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-    .section-label {
-      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 22px; font-weight: 500;
-    }
+    .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; font-weight: 500; }
 
-    .song-table-header {
-      display: grid;
-      grid-template-columns: 32px 1fr 80px;
-      padding: 0 12px 10px 12px;
-      border-bottom: 1px solid var(--border2);
-      margin-bottom: 4px;
-    }
+    .song-table-header { display: grid; grid-template-columns: 32px 1fr 100px; padding: 0 12px 10px; border-bottom: 1px solid var(--border2); margin-bottom: 4px; }
     .col-head { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); }
     .col-head.right { text-align: right; }
 
-    .songItem {
-      display: grid;
-      grid-template-columns: 32px 1fr 80px;
-      align-items: center;
-      padding: 9px 12px;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background 0.15s;
-      gap: 0;
-    }
+    .songItem { display: grid; grid-template-columns: 32px 1fr 100px; align-items: center; padding: 9px 12px; border-radius: 3px; cursor: pointer; transition: background 0.15s; }
     .songItem:hover { background: rgba(255,255,255,0.04); }
+    [data-theme="light"] .songItem:hover { background: rgba(0,0,0,0.04); }
     .songItem.active { background: var(--green-dim); }
     .songItem.active .song-num { color: var(--green); }
     .songItem.active .song-title { color: var(--green); }
 
     .song-num { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
     .song-title { font-size: 13.5px; font-weight: 400; padding: 0 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .song-duration {
-      text-align: right; font-size: 12px; color: var(--muted);
-      font-variant-numeric: tabular-nums; letter-spacing: 0.04em;
-      display: flex; align-items: center; justify-content: flex-end; gap: 8px;
-    }
+    .song-duration { text-align: right; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
 
-    .songItemPlay {
-      font-size: 15px; color: var(--muted); opacity: 0;
-      transition: opacity 0.15s, color 0.15s;
-    }
+    /* star fav */
+    .fav-star { font-size: 13px; color: var(--muted2); cursor: pointer; transition: color 0.2s, transform 0.15s; opacity: 0; flex-shrink: 0; }
+    .songItem:hover .fav-star { opacity: 1; }
+    .fav-star.active { color: var(--star); opacity: 1; }
+    .fav-star:hover { transform: scale(1.2); }
+
+    .songItemPlay { font-size: 15px; color: var(--muted); opacity: 0; transition: opacity 0.15s, color 0.15s; }
     .songItem:hover .songItemPlay { opacity: 1; }
     .songItem.active .songItemPlay { opacity: 1; color: var(--green); }
 
-    /* Cover pane */
-    .cover-pane {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 36px; gap: 0; position: sticky; top: 0; height: 100%;
-    }
-
-    .cover-art {
-      width: 220px; height: 220px; border-radius: 4px;
-      background: var(--surface2) center/cover no-repeat;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.55);
-      margin-bottom: 28px;
-      transition: background-image 0.4s ease;
-      flex-shrink: 0;
-    }
+    /* ── COVER PANE ── */
+    .cover-pane { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px; position: sticky; top: 0; height: 100%; }
+    .cover-art { width: 220px; height: 220px; border-radius: 4px; background: var(--surface2) center/cover no-repeat; box-shadow: 0 24px 64px rgba(0,0,0,0.55); margin-bottom: 28px; flex-shrink: 0; transition: background-image 0.4s ease; }
+    [data-theme="light"] .cover-art { box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
     .cover-now-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .cover-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; text-align: center; color: var(--text); margin-bottom: 4px; }
     .cover-sub { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
 
-    /* ── ABOUT PAGE ── */
+    /* ── ABOUT ── */
     .about-inner { max-width: 760px; margin: 0 auto; padding: 52px 40px; }
-
     .about-hero { display: flex; align-items: flex-start; gap: 32px; margin-bottom: 56px; }
     .about-hero svg { flex-shrink: 0; margin-top: 4px; }
     .about-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; margin-bottom: 14px; line-height: 1.1; }
     .about-hero p { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; }
-
     .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
-    .feat-card {
-      padding: 22px 20px; border-radius: 3px;
-      background: var(--surface); border: 1px solid var(--border2);
-      transition: border-color 0.2s, background 0.2s;
-    }
+    .feat-card { padding: 22px 20px; border-radius: 3px; background: var(--surface); border: 1px solid var(--border2); transition: border-color 0.2s, background 0.2s; }
     .feat-card:hover { border-color: var(--border); background: var(--surface2); }
     .feat-icon { font-size: 15px; color: var(--green); margin-bottom: 14px; }
-    .feat-card h3 { font-size: 13px; font-weight: 500; margin-bottom: 8px; letter-spacing: 0.02em; }
+    .feat-card h3 { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
     .feat-card p { font-size: 12.5px; color: var(--muted); line-height: 1.65; font-weight: 300; }
-
     .stats-row { display: flex; gap: 16px; }
-    .stat-box {
-      flex: 1; padding: 22px 20px; border-radius: 3px;
-      background: var(--surface); border: 1px solid var(--border2);
-      display: flex; flex-direction: column; gap: 4px;
-    }
+    .stat-box { flex: 1; padding: 22px 20px; border-radius: 3px; background: var(--surface); border: 1px solid var(--border2); display: flex; flex-direction: column; gap: 4px; }
     .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--green); }
     .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
@@ -222,11 +144,17 @@
     .player-gif.visible { opacity: 1; }
     .player-song { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+    /* fav in player */
+    .player-fav { font-size: 14px; color: var(--muted2); cursor: pointer; transition: color 0.2s, transform 0.15s; flex-shrink: 0; }
+    .player-fav.active { color: var(--star); }
+    .player-fav:hover { transform: scale(1.15); }
+
     .player-controls { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
-    .ctrl-btns { display: flex; align-items: center; gap: 24px; }
+    .ctrl-btns { display: flex; align-items: center; gap: 20px; }
     .ctrl-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px; transition: color 0.15s; padding: 0; }
     .ctrl-btn:hover { color: var(--text); }
+    .ctrl-btn.active-ctrl { color: var(--green); }
     .play-btn { font-size: 30px; color: var(--text); transition: transform 0.1s, color 0.15s; }
     .play-btn:hover { transform: scale(1.05); color: var(--green); }
 
@@ -234,92 +162,61 @@
     .time-label { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; width: 32px; flex-shrink: 0; }
     .time-label.right { text-align: right; }
 
-    .prog-wrap {
-      flex: 1; height: 3px; position: relative; cursor: pointer;
-      display: flex; align-items: center;
-    }
+    .prog-wrap { flex: 1; height: 3px; position: relative; cursor: pointer; display: flex; align-items: center; }
     .prog-track { width: 100%; height: 2px; background: var(--border); border-radius: 1px; overflow: visible; position: relative; }
-    .prog-fill { height: 100%; width: 0; background: var(--green); border-radius: 1px; transition: none; }
-    .prog-knob {
-      width: 10px; height: 10px; border-radius: 50%; background: var(--text);
-      position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%);
-      opacity: 0; transition: opacity 0.15s; pointer-events: none;
-    }
+    .prog-fill { height: 100%; width: 0; background: var(--green); border-radius: 1px; }
+    .prog-knob { width: 10px; height: 10px; border-radius: 50%; background: var(--text); position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.15s; pointer-events: none; }
     .prog-wrap:hover .prog-knob { opacity: 1; }
 
-    .player-right { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+    /* player right — volume slider */
+    .player-right { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+    .vol-wrap { display: flex; align-items: center; gap: 8px; }
+    .vol-icon { font-size: 13px; color: var(--muted); cursor: pointer; transition: color 0.15s; flex-shrink: 0; }
+    .vol-icon:hover { color: var(--text); }
 
-    /* ── SETTINGS OVERLAY ── */
-    .settings-overlay {
-      position: fixed; inset: 0; z-index: 100;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    /* volume slider */
+    .vol-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 80px; height: 3px; border-radius: 2px; outline: none; cursor: pointer;
+      background: linear-gradient(to right, var(--green) 100%, var(--border) 100%);
     }
+    .vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--text); cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .vol-slider::-webkit-slider-thumb:hover { transform: scale(1.3); }
+    .vol-slider::-moz-range-thumb { width: 11px; height: 11px; border-radius: 50%; background: var(--text); cursor: pointer; border: none; }
+
+    /* ── SETTINGS ── */
+    .settings-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .settings-overlay.open { opacity: 1; pointer-events: all; }
-
-    .settings-modal {
-      width: 420px; background: var(--surface); border: 1px solid var(--border);
-      border-radius: 4px; overflow: hidden;
-      transform: translateY(12px); transition: transform 0.2s;
-    }
+    .settings-modal { width: 420px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transform: translateY(12px); transition: transform 0.2s; }
     .settings-overlay.open .settings-modal { transform: translateY(0); }
-
-    .settings-head {
-      padding: 20px 24px; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    .settings-head { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
     .settings-head h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; }
     .close-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px; transition: color 0.15s; }
     .close-btn:hover { color: var(--text); }
-
     .settings-body { padding: 8px 0 16px; }
-
     .s-section { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); padding: 16px 24px 8px; }
     .s-sep { height: 1px; background: var(--border2); margin: 8px 0; }
-
-    .s-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 11px 24px; transition: background 0.15s;
-    }
+    .s-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 24px; transition: background 0.15s; }
     .s-row:hover { background: rgba(255,255,255,0.025); }
+    [data-theme="light"] .s-row:hover { background: rgba(0,0,0,0.025); }
     .s-row-left { display: flex; align-items: center; gap: 14px; }
-    .s-icon {
-      width: 30px; height: 30px; border-radius: 2px;
-      background: rgba(255,255,255,0.05); border: 1px solid var(--border2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; color: var(--muted); flex-shrink: 0;
-    }
+    .s-icon { width: 30px; height: 30px; border-radius: 2px; background: rgba(255,255,255,0.05); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--muted); flex-shrink: 0; }
+    [data-theme="light"] .s-icon { background: rgba(0,0,0,0.04); }
     .s-label { font-size: 13px; }
     .s-sub { font-size: 11.5px; color: var(--muted); font-weight: 300; margin-top: 1px; }
-
-    /* toggle */
     .toggle { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
     .toggle input { opacity: 0; width: 0; height: 0; }
-    .toggle-slider {
-      position: absolute; inset: 0; border-radius: 10px;
-      background: var(--border); cursor: pointer; transition: background 0.2s;
-    }
-    .toggle-slider::before {
-      content: ''; position: absolute; width: 14px; height: 14px;
-      border-radius: 50%; background: var(--muted); left: 3px; top: 3px;
-      transition: transform 0.2s, background 0.2s;
-    }
+    .toggle-slider { position: absolute; inset: 0; border-radius: 10px; background: var(--border); cursor: pointer; transition: background 0.2s; }
+    .toggle-slider::before { content: ''; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--muted); left: 3px; top: 3px; transition: transform 0.2s, background 0.2s; }
     .toggle input:checked + .toggle-slider { background: rgba(29,185,84,0.3); }
     .toggle input:checked + .toggle-slider::before { transform: translateX(16px); background: var(--green); }
-
-    .s-select {
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 2px;
-      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 12.5px;
-      padding: 5px 10px; cursor: pointer; outline: none;
-    }
-
-    .s-logout-btn {
-      padding: 7px 16px; border-radius: 2px; font-size: 12px; letter-spacing: 0.08em;
-      text-transform: uppercase; background: transparent; cursor: pointer;
-      border: 1px solid rgba(220,80,80,0.3); color: #e07070;
-      transition: background 0.18s, border-color 0.18s;
-    }
+    .s-select { background: var(--surface2); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 12.5px; padding: 5px 10px; cursor: pointer; outline: none; }
+    .s-logout-btn { padding: 7px 16px; border-radius: 2px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; cursor: pointer; border: 1px solid rgba(220,80,80,0.3); color: #e07070; transition: background 0.18s, border-color 0.18s; }
     .s-logout-btn:hover { background: rgba(220,80,80,0.08); border-color: rgba(220,80,80,0.5); }
   </style>
 </head>
@@ -348,11 +245,9 @@
 
   <!-- MAIN -->
   <main>
-
     <!-- HOME -->
     <div id="homePage" class="page active">
       <div class="home-inner">
-
         <div class="song-list-pane">
           <p class="section-label">Chill Songs</p>
           <div class="song-table-header">
@@ -364,63 +259,62 @@
           <div class="songItem" data-index="0">
             <span class="song-num">1</span>
             <span class="song-title">Rakhlo Tum Chupake</span>
-            <span class="song-duration">3:25 <i id="0" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">3:25 <i class="far fav-star fa-star" data-index="0"></i> <i id="0" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="1">
             <span class="song-num">2</span>
             <span class="song-title">Bairan</span>
-            <span class="song-duration">2:30 <i id="1" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">2:30 <i class="far fav-star fa-star" data-index="1"></i> <i id="1" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="2">
             <span class="song-num">3</span>
             <span class="song-title">Haath toh laga</span>
-            <span class="song-duration">2:47 <i id="2" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">2:47 <i class="far fav-star fa-star" data-index="2"></i> <i id="2" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="3">
             <span class="song-num">4</span>
             <span class="song-title">Gal Sun</span>
-            <span class="song-duration">3:16 <i id="3" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">3:16 <i class="far fav-star fa-star" data-index="3"></i> <i id="3" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="4">
             <span class="song-num">5</span>
             <span class="song-title">Heat Waves</span>
-            <span class="song-duration">3:59 <i id="4" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">3:59 <i class="far fav-star fa-star" data-index="4"></i> <i id="4" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="5">
             <span class="song-num">6</span>
             <span class="song-title">Javedan</span>
-            <span class="song-duration">6:06 <i id="5" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">6:06 <i class="far fav-star fa-star" data-index="5"></i> <i id="5" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="6">
             <span class="song-num">7</span>
             <span class="song-title">I Guess</span>
-            <span class="song-duration">3:05 <i id="6" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">3:05 <i class="far fav-star fa-star" data-index="6"></i> <i id="6" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="7">
             <span class="song-num">8</span>
             <span class="song-title">Par Ab Jo Ayegi Tu</span>
-            <span class="song-duration">3:04 <i id="7" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">3:04 <i class="far fav-star fa-star" data-index="7"></i> <i id="7" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="8">
             <span class="song-num">9</span>
             <span class="song-title">Rang Jo Lagyo</span>
-            <span class="song-duration">4:45 <i id="8" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">4:45 <i class="far fav-star fa-star" data-index="8"></i> <i id="8" class="far songItemPlay fa-play-circle"></i></span>
           </div>
           <div class="songItem" data-index="9">
             <span class="song-num">10</span>
             <span class="song-title">Sheesha</span>
-            <span class="song-duration">3:14 <i id="9" class="far songItemPlay fa-play-circle"></i></span>
+            <span class="song-duration">3:14 <i class="far fav-star fa-star" data-index="9"></i> <i id="9" class="far songItemPlay fa-play-circle"></i></span>
           </div>
         </div>
 
-        <!-- Cover art pane -->
+        <!-- Cover pane -->
         <div class="cover-pane">
           <div class="cover-art" id="coverArt"></div>
           <p class="cover-now-label">Now Playing</p>
           <p class="cover-title" id="coverTitle">Rakhlo Tum Chupake</p>
-          <p class="cover-sub"> Classics</p>
+          <p class="cover-sub">Chill Songs</p>
         </div>
-
       </div>
     </div>
 
@@ -436,25 +330,22 @@
             <p>Spotify brings you hand-picked songs. Discover, revisit classics, and enjoy seamless playback — all in one beautifully refined player.</p>
           </div>
         </div>
-
         <div class="about-grid">
-          <div class="feat-card"><div class="feat-icon"><i class="fas fa-music"></i></div><h3>Curated Playlist</h3><p>Hand-picked classics updated for every mood and moment.</p></div>
-          <div class="feat-card"><div class="feat-icon"><i class="fas fa-bolt"></i></div><h3>Instant Playback</h3><p>Zero buffering with seamless transitions between tracks.</p></div>
-          <div class="feat-card"><div class="feat-icon"><i class="fas fa-sliders-h"></i></div><h3>Smart Controls</h3><p>Seekable progress bar, auto-advance, per-song play icons.</p></div>
-          <div class="feat-card"><div class="feat-icon"><i class="fas fa-moon"></i></div><h3>Dark &amp; Light</h3><p>Switch themes instantly from Settings. Your eyes, your choice.</p></div>
-          <div class="feat-card"><div class="feat-icon"><i class="fas fa-image"></i></div><h3>Album Art</h3><p>Full cover shown in the side panel, bringing each song to life.</p></div>
-          <div class="feat-card"><div class="feat-icon"><i class="fas fa-infinity"></i></div><h3>Endless Listening</h3><p>Songs auto-advance so the music never stops.</p></div>
+          <div class="feat-card"><div class="feat-icon"><i class="fas fa-music"></i></div><h3>Curated Playlist</h3><p>Hand-picked classics for every mood.</p></div>
+          <div class="feat-card"><div class="feat-icon"><i class="fas fa-bolt"></i></div><h3>Instant Playback</h3><p>Zero buffering, seamless transitions.</p></div>
+          <div class="feat-card"><div class="feat-icon"><i class="fas fa-random"></i></div><h3>Shuffle Mode</h3><p>Randomise your queue with one click.</p></div>
+          <div class="feat-card"><div class="feat-icon"><i class="fas fa-star"></i></div><h3>Favourites</h3><p>Star songs to mark your favourites.</p></div>
+          <div class="feat-card"><div class="feat-icon"><i class="fas fa-volume-up"></i></div><h3>Volume Slider</h3><p>Fine-tune volume right from the player bar.</p></div>
+          <div class="feat-card"><div class="feat-icon"><i class="fas fa-moon"></i></div><h3>Dark &amp; Light</h3><p>Switch themes instantly. Your eyes, your choice.</p></div>
         </div>
-
         <div class="stats-row">
           <div class="stat-box"><span class="stat-num">10</span><span class="stat-label">Songs</span></div>
           <div class="stat-box"><span class="stat-num">1</span><span class="stat-label">Playlist</span></div>
-          <div class="stat-box"><span class="stat-num">0ms</span><span class="stat-label">Startup Time</span></div>
+          <div class="stat-box"><span class="stat-num">0ms</span><span class="stat-label">Startup</span></div>
           <div class="stat-box"><span class="stat-num">∞</span><span class="stat-label">Good Vibes</span></div>
         </div>
       </div>
     </div>
-
   </main>
 
   <!-- PLAYER BAR -->
@@ -462,13 +353,16 @@
     <div class="player-info">
       <img src="playing.gif" id="gif" class="player-gif" alt="playing">
       <span id="masterSongName">Rakhlo Tum Chupake</span>
+      <i class="far player-fav fa-star" id="playerFav" title="Favourite"></i>
     </div>
 
     <div class="player-controls">
       <div class="ctrl-btns">
+        <button class="ctrl-btn" id="shuffleBtn" title="Shuffle"><i class="fas fa-random"></i></button>
         <button class="ctrl-btn" id="previous"><i class="fas fa-step-backward"></i></button>
         <button class="ctrl-btn play-btn" id="masterPlay"><i class="far fa-play-circle"></i></button>
         <button class="ctrl-btn" id="next"><i class="fas fa-step-forward"></i></button>
+        <button class="ctrl-btn" id="autoBtn" title="Auto-advance"><i class="fas fa-redo"></i></button>
       </div>
       <div class="progress-row">
         <span class="time-label" id="currentTime">0:00</span>
@@ -483,6 +377,11 @@
     </div>
 
     <div class="player-right">
+      <div class="vol-wrap">
+        <i class="fas fa-volume-down vol-icon" id="volDown"></i>
+        <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.01" value="1">
+        <i class="fas fa-volume-up vol-icon" id="volUp"></i>
+      </div>
       <button class="icon-btn" id="settingsBtnPlayer" title="Settings"><i class="fas fa-sliders-h"></i></button>
     </div>
   </div>
@@ -495,7 +394,6 @@
         <button class="close-btn" id="closeSettings"><i class="fas fa-times"></i></button>
       </div>
       <div class="settings-body">
-
         <p class="s-section">Appearance</p>
         <div class="s-row">
           <div class="s-row-left">
@@ -504,10 +402,8 @@
           </div>
           <label class="toggle"><input type="checkbox" id="darkModeToggle" checked><span class="toggle-slider"></span></label>
         </div>
-
         <div class="s-sep"></div>
         <p class="s-section">Playback</p>
-
         <div class="s-row">
           <div class="s-row-left">
             <div class="s-icon"><i class="fas fa-redo"></i></div>
@@ -515,23 +411,8 @@
           </div>
           <label class="toggle"><input type="checkbox" id="autoAdvanceToggle" checked><span class="toggle-slider"></span></label>
         </div>
-
-        <div class="s-row">
-          <div class="s-row-left">
-            <div class="s-icon"><i class="fas fa-volume-up"></i></div>
-            <div><div class="s-label">Volume</div><div class="s-sub">Default playback volume</div></div>
-          </div>
-          <select class="s-select" id="volumeSelect">
-            <option value="1">100%</option>
-            <option value="0.75">75%</option>
-            <option value="0.5">50%</option>
-            <option value="0.25">25%</option>
-          </select>
-        </div>
-
         <div class="s-sep"></div>
         <p class="s-section">Display</p>
-
         <div class="s-row">
           <div class="s-row-left">
             <div class="s-icon"><i class="fas fa-image"></i></div>
@@ -539,17 +420,14 @@
           </div>
           <label class="toggle"><input type="checkbox" id="albumArtToggle" checked><span class="toggle-slider"></span></label>
         </div>
-
         <div class="s-sep"></div>
         <p class="s-section">Account</p>
-
         <div class="s-row">
           <div class="s-row-left">
             <div class="s-icon"><i class="fas fa-user"></i></div>
             <div><div class="s-label">Signed in as</div><div class="s-sub" id="userInfoModal">—</div></div>
           </div>
         </div>
-
         <div class="s-row">
           <div class="s-row-left">
             <div class="s-icon" style="color:#e07070;background:rgba(220,80,80,0.08);border-color:rgba(220,80,80,0.15)"><i class="fas fa-sign-out-alt"></i></div>
@@ -557,18 +435,11 @@
           </div>
           <button class="s-logout-btn" id="logoutModal">Logout</button>
         </div>
-
       </div>
     </div>
   </div>
 
   <script type="module" src="auth.js"></script>
   <script type="module" src="script.js"></script>
-  <script type="module">
-    // Wire settings button in player bar too
-    document.getElementById('settingsBtnPlayer')?.addEventListener('click', () => {
-      document.getElementById('settingsOverlay').classList.add('open');
-    });
-  </script>
 </body>
 </html>
